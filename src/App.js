@@ -4,7 +4,7 @@ import ErrorBoundary from "./ErrorBoundary";
 import Editor from "./editor/Editor";
 import getMockText from './text.service';
 
-class App extends Component {
+export default class App extends Component {
 
     constructor(props) {
         super(props);
@@ -12,9 +12,6 @@ class App extends Component {
         this.state = {
             html: ''
         };
-    }
-    componentDidMount() {
-        this.setText()
     }
 
     setText() {
@@ -27,6 +24,10 @@ class App extends Component {
         console.log('onTextChange Callback Fired');
     }
 
+    componentDidMount() {
+        this.setText()
+    }
+
     render() {
         return (
             <ErrorBoundary>
@@ -37,7 +38,7 @@ class App extends Component {
                     <main>
                         <h3>Default Editor</h3>
                         <Editor />
-                        <h3>Customize options</h3>
+                        <h3>Customized options</h3>
                         <Editor availableActions={['bold', 'italic', 'underline', 'strikeThrough']}
                                 onTextChange={this.onTextChange}>
                             {this.state.html}
@@ -48,5 +49,3 @@ class App extends Component {
         );
     }
 }
-
-export default App;

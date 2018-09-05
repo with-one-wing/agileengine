@@ -17,15 +17,11 @@ export default class Editor extends Component {
         this.state = {actions};
     }
 
-    execCommand(control) {
-        document.execCommand(control, false, null);
-    }
-
     onControlClick = controlName => {
         const actions = {...this.state.actions};
         actions[controlName].selected = !actions[controlName].selected;
         this.setState({actions});
-        this.execCommand(controlName);
+        document.execCommand(controlName, false, null)
     };
 
     onTextSelect = e => {
@@ -54,11 +50,11 @@ export default class Editor extends Component {
         availableActions: ['bold', 'italic', 'underline'],
         onTextChange: () => {console.log('Change Event fired')},
         name: 'Stranger'
-    }
+    };
 
     static propTypes = {
         onTextChange: PropTypes.func,
         availableActions: PropTypes.arrayOf(PropTypes.string),
         children: PropTypes.string,
-    }
+    };
 }

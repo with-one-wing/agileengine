@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './ControlPanel.css';
 
-class ControlPanel extends Component {
+export default class ControlPanel extends Component {
 
     getControlList() {
         return Object.keys(this.props.actions).map(controlName => {
@@ -31,11 +31,9 @@ class ControlPanel extends Component {
             </div>
         );
     }
+
+    static propTypes = {
+        actions: PropTypes.object,
+        onControlClick: PropTypes.func.isRequired,
+    };
 }
-
-ControlPanel.propTypes = {
-    actions: PropTypes.object,
-    onControlClick: PropTypes.func.isRequired,
-};
-
-export default ControlPanel;

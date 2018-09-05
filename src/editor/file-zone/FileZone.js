@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './FileZone.css';
 
-class FileZone extends Component {
+export default class FileZone extends Component {
 
     render() {
         return (
@@ -17,12 +17,10 @@ class FileZone extends Component {
             </div>
         );
     }
+
+    static propTypes = {
+        children: PropTypes.string,
+        onTextChange: PropTypes.func.isRequired,
+        onTextSelect: PropTypes.func.isRequired,
+    };
 }
-
-FileZone.propTypes = {
-    children: PropTypes.string,
-    onTextChange: PropTypes.func.isRequired,
-    onTextSelect: PropTypes.func.isRequired,
-};
-
-export default FileZone;
